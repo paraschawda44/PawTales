@@ -1,0 +1,1411 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Custom Font */
+@font-face {
+    font-family: "MemphisRiver";
+    src: url("../fonts/Memphis River.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*  HEADER SECTION  */
+
+header{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    animation: headerSlide 1.2s ease forwards;
+    opacity: 0;
+}
+
+@keyframes headerSlide {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.pawlogo1{
+    width: 15%;
+}
+
+.logoimage{
+    height: 120px;
+    width: auto;
+    animation: logoPop 1.5s ease forwards, floatLogo 4s infinite ease-in-out;
+}
+
+@keyframes logoPop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes floatLogo {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+
+.logotext{
+    color: #f64922;
+    font-size: clamp(24px, 4vw, 50px);
+    font-weight: 900;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.664);
+    display: flex;
+    align-items: center;
+    animation: glowText 3s infinite alternate;
+}
+
+@keyframes glowText {
+  from {
+    text-shadow: 0 0 5px #8a6f0c;
+  }
+  to {
+    text-shadow: 0 0 20px #e3bc79, 0 0 40px #7b8a0c;
+  }
+}
+
+
+/* ----------------Desktop menu-------------------- */
+/* ================= HEADER MENU (DESKTOP) ================= */
+
+header ul {
+  display: flex;
+  justify-content: flex-end;
+  width: 60%;
+  list-style: none;
+}
+
+header ul li {
+  margin: 0 8px;
+}
+
+header a {
+  color: #e41818;
+  text-decoration: none;
+  font-size: clamp(14px, 2vw, 20px);
+  padding: 8px 12px;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+/* Hover underline */
+header a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #c06b16;
+  transition: 0.3s;
+}
+
+header a:hover::after {
+  width: 100%;
+}
+
+header a:hover {
+  transform: scale(1.05);
+  color: #8a0c0c;
+}
+
+/* ================= HAMBURGER BUTTON ================= */
+
+
+
+
+/* ================= HEADER ================= */
+
+/* HAMBURGER */
+.ham-menu {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 3000;
+}
+
+.ham-menu span {
+  width: 30px;
+  height: 4px;
+  background: #000;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+/* X ANIMATION */
+.ham-menu.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+.ham-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+.ham-menu.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* MENU PANEL */
+.off-screen-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 260px;
+  height: 50vh;
+  background: #f4efefc3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  transition: 0.4s ease;
+  z-index: 2000;
+}
+
+.off-screen-menu.active {
+  right: 0;
+}
+
+.off-screen-menu a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* OVERLAY */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 1500;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .ham-menu {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+
+
+
+
+/* -------------------------------------------- */
+
+
+
+
+
+
+/* -------------------Hamburger animation via JS------------ */
+.menu-btn.open {
+  font-size: 28px;
+}
+
+.menu-btn.open::before {
+  content: "✖";
+}
+
+.menu-btn:not(.open)::before {
+  content: "☰";
+}
+
+
+
+
+
+
+
+
+/* ---------Underline Slide Effect------------ */
+header a::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #c06b16;
+    transition: 0.3s;
+}
+
+header a:hover::after{
+    width: 100%;
+}
+
+/* Hover Zoom */
+header a:hover{
+    color: #8a0c0c;
+    transform: scale(1.1);
+}
+
+
+/* ------------------------- MAIN IMAGE SECTION -------------------- */
+
+/* ================= MAIN IMAGE SECTION ================= */
+
+#Mainsec {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.Mainprof {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* ================= TEXT OVER IMAGE ================= */
+
+.text {
+  position: absolute;
+  left: clamp(15px, 5vw, 60px);
+  top: 70%;
+  transform: translateY(-50%);
+  max-width: 650px;
+  color: white;
+  animation: fadeIn 1.8s ease forwards;
+}
+
+.text h1 {
+  font-size: clamp(32px, 6vw, 70px);
+  font-weight: 900;
+  color: #e73108;
+  text-shadow: 3px 3px 10px black;
+  margin-bottom: 10px;
+}
+
+.text h2 {
+  font-size: clamp(18px, 4vw, 26px);
+  font-weight: 600;
+  color: #f6f0f0;
+  margin-bottom: 8px;
+  text-shadow: 2px 2px 8px black;
+}
+
+.text h3 {
+  font-size: clamp(16px, 3vw, 22px);
+  font-weight: 400;
+  color: #f1f1f1;
+  line-height: 1.5;
+  text-shadow: 2px 2px 6px black;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-30px, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+
+/* ================= INTRO SECTION ================= */
+
+.Intro {
+  padding: clamp(40px, 8vw, 80px) clamp(20px, 6vw, 80px);
+}
+
+.secTitle {
+  font-size: clamp(36px, 6vw, 70px);
+  font-weight: 900;
+  color: #f64922;
+  text-shadow: 3px 3px 10px black;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* ================= FLEX LAYOUT ================= */
+
+.row {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================= VIDEO ================= */
+
+.introsec video {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 25px;
+  transition: transform 0.4s ease;
+}
+
+.introsec video:hover {
+  transform: scale(1.05);
+}
+
+/* ================= INTRO TEXT ================= */
+
+.intro-text {
+  flex: 1;
+  max-width: 650px;
+  padding: 10px;
+}
+
+.intro-text h2 {
+  font-size: clamp(24px, 4vw, 40px);
+  color: #25343F;
+}
+
+.intro-text p {
+  font-size: clamp(16px, 2.5vw, 22px);
+  margin: 12px 0;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* ================= DOG BREED SECTION ================= */
+
+.Dogsec {
+  font-size: clamp(36px, 6vw, 60px);
+  font-weight: 900;
+  color: #f64922;
+  text-shadow: 3px 3px 10px black;
+  text-align: center;
+  margin: 60px 0 40px;
+}
+
+/* ================= BREED CARDS ================= */
+
+.Breeds {
+  flex: 1 1 clamp(260px, 30vw, 320px);
+  max-width: 350px;
+  padding: 15px;
+  border-radius: 15px;
+  background: #fff;
+  border: 2px solid #ddd;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: 0.4s ease;
+}
+
+.Breeds:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  border-color: #d73c1a;
+}
+
+/* ================= CARD IMAGE ================= */
+
+.Breeds img {
+  width: 100%;
+  height: 250px;
+ 
+  border-radius: 10px;
+  transition: 0.4s ease;
+}
+
+.Breeds:hover img {
+  transform: scale(1.08);
+}
+
+/* ================= CARD TEXT ================= */
+
+.Breeds h2 {
+  font-size: 22px;
+  margin: 12px 0 6px;
+}
+
+.Breeds h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.Breeds a {
+  text-decoration: none;
+  color: #0056ff;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.Breeds a:hover {
+  color: #bb5b11;
+  letter-spacing: 1px;
+}
+
+/* ================= MOBILE OPTIMIZATION ================= */
+
+@media (max-width: 768px) {
+
+  .text {
+    top: 75%;
+    text-align: left;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .intro-text {
+    text-align: left;
+  }
+
+  .Breeds img {
+    height: 200px;
+  }
+}
+
+
+
+
+
+
+
+
+/*------------------------ Health section--------------------*/
+
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.info-card {
+  background: white;
+  padding: 15px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/*------------------------Food section --------------------*/
+.food-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.food-box {
+  background: white;
+  padding: 20px;
+  width: 320px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+
+.food-box h3 {
+  color: #7b8a0c;
+  margin-bottom: 10px;
+}
+
+.food-box ul {
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.food-box.danger h3 {
+  color: red;
+}
+
+.info-card, .food-box {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.info-card:hover, .food-box:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .info-section {
+    padding: 40px 5%;
+  }
+
+  .info-section h1 {
+    font-size: 28px;
+  }
+
+  .food-container, .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+
+/*------------------------ About us section --------------------*/
+
+
+/* ================= COMMON SECTION STYLE ================= */
+
+.info-section {
+  padding: 80px 10%;
+  text-align: center;
+  background: #f9fafc;
+  margin-top: 50px;
+  border-radius: 20px;
+
+  /* Entrance Animation */
+  opacity: 0;
+  transform: translateY(40px);
+  animation: sectionReveal 1s ease forwards;
+}
+
+/* ================= TITLE ================= */
+
+.info-section h1 {
+  font-size: 40px;
+  color: #7b8a0c;
+  margin-bottom: 20px;
+  text-shadow: 2px 1px black;
+
+  opacity: 0;
+  transform: scale(0.9);
+  animation: titleZoom 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* ================= PARAGRAPH ================= */
+
+.info-section p {
+  font-size: 18px;
+  max-width: 800px;
+  margin: auto;
+  color: #333;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: textFade 0.8s ease forwards;
+  animation-delay: 0.6s;
+}
+
+/* ================= ABOUT BOX ================= */
+
+.about-box {
+  background: white;
+  padding: 20px;
+  margin: 15px auto;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  opacity: 0;
+  transform: translateY(30px);
+  animation: boxFade 0.8s ease forwards;
+  animation-delay: 0.9s;
+
+  transition: all 0.4s ease;
+}
+
+/* Hover Lift Effect */
+.about-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+}
+
+/* ================= ABOUT TITLE ================= */
+
+.about-box h3 {
+  color: #7b8a0c;
+  transition: color 0.3s ease;
+}
+
+.about-box:hover h3 {
+  color: #5f6d09;
+}
+
+/* ================= SOCIAL ICONS ================= */
+
+.social-icons {
+  font-size: 30px;
+  display: inline-block;
+  animation: iconPulse 2s infinite ease-in-out;
+}
+
+/* ================= KEYFRAMES ================= */
+
+@keyframes sectionReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleZoom {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes textFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes boxFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .info-section {
+    padding: 50px 5%;
+  }
+
+  .info-section h1 {
+    font-size: 28px;
+  }
+
+  .info-section p {
+    font-size: 16px;
+  }
+}
+
+/* ================= ACCESSIBILITY ================= */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+
+
+
+
+
+
+/*------------------------ Terms & conditions --------------------*/
+/* ================= TERMS SECTION ================= */
+
+#Terms {
+  background: #f9fafc;
+  padding: 80px 10%;
+  text-align: left;
+  border-radius: 20px;
+  margin-top: 50px;
+
+  /* Animation */
+  opacity: 0;
+  transform: translateY(40px);
+  animation: sectionFadeUp 1s ease forwards;
+}
+
+/* ================= HEADINGS ================= */
+
+#Terms h1 {
+  text-align: center;
+  color: #7b8a0c;
+  font-size: 40px;
+  margin-bottom: 30px;
+
+  opacity: 0;
+  transform: scale(0.95);
+  animation: titlePop 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+#Terms h3 {
+  color: #555;
+  font-size: 22px;
+  margin-top: 20px;
+
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideLeft 0.6s ease forwards;
+  animation-delay: 0.6s;
+}
+
+/* ================= PARAGRAPH ================= */
+
+#Terms p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeText 0.6s ease forwards;
+  animation-delay: 0.8s;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes sectionFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titlePop {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  #Terms {
+    padding: 50px 5%;
+  }
+
+  #Terms h1 {
+    font-size: 28px;
+  }
+
+  #Terms h3 {
+    font-size: 18px;
+  }
+
+  #Terms p {
+    font-size: 15px;
+  }
+}
+
+/* ================= ACCESSIBILITY ================= */
+/* Respect reduced motion preference */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+
+
+
+/*------------------------ Footer section --------------------*/
+.footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  margin-top: 50px;
+}
+
+.footer a {
+  color: #7b8a0c;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+/* ---------------------------Breed detail section --------------------- */
+
+/* ===== COMMON SECTION STYLING ===== */
+.dog-video-section,
+.dog-image-section,
+.breed-detail-section {
+  padding: 80px 10%;
+  text-align: center;
+  background: transparent; /* ✅ DO NOT REMOVE PAGE BACKGROUND */
+  animation: fadeInUp 1.2s ease forwards;
+  opacity: 0;
+}
+
+
+/* Headings */
+.dog-video-section h1,
+.dog-image-section h1,
+.breed-detail-section h1 {
+  font-size: 70px;
+  color: #333;
+  margin-bottom: 10px;
+  animation: zoomIn 1s ease forwards;
+}
+
+.dog-video-section p,
+.dog-image-section p {
+  color: #666;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+/* ===== VIDEO SECTION ===== */
+.video-container {
+  display: flex;
+  justify-content: center;
+}
+
+.video-container video {
+ 
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover Effect */
+.video-container video:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* ===== IMAGE GALLERY ===== */
+.dog-gallery {
+  
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  flex-wrap: wrap;
+}
+
+.dog-gallery img {
+  width: 500px;
+  height: 600px;
+  
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: 0.4s ease;
+  animation: float 3s infinite ease-in-out;
+}
+
+/* Hover Zoom */
+.dog-gallery img:hover {
+  transform: scale(1.1) rotate(2deg);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+/* ===== BREED DETAIL BOX ===== */
+.breed-box {
+  background: rgb(255, 255, 255);
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  text-align: left;
+  animation: slideUp 1.2s ease forwards;
+  opacity: 0;
+}
+
+.breed-box h2 {
+  color: #c76f04;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.breed-box p {
+  color: #080808;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.breed-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+.breed-box li {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* ===== KEYFRAME ANIMATIONS ===== */
+
+/* Fade in from bottom */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Zoom heading */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Floating images */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+/* Slide breed card */
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .video-container video {
+    width: 100%;
+  }
+
+  .dog-gallery img {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .breed-box {
+    text-align: center;
+  }
+}
+
+
+
+
+
+
+
+/*------------- Load More Button ----------*/
+.load-more-container {
+  text-align: center;
+  margin: 60px 0;
+}
+
+#loadMoreBtn {
+  padding: 14px 36px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+#loadMoreBtn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #ff9a3c, #ff5e00);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+#loadMoreBtn:active {
+  transform: scale(0.95);
+}
+
+.reveal {
+  animation: reveal 0.6s ease forwards;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+.Breeds {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.Breeds.reveal {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ================= Media query  ================= */
+
+
+/* ================= SMALL PHONES (max 480px) ================= */
+@media (max-width: 480px) {
+
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pawlogo1 {
+    width: 40%;
+  }
+
+  .logoimage {
+    height: 80px;
+  }
+
+  header ul {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  header a {
+    font-size: 14px;
+  }
+
+  .Mainprof {
+    height: 400px;
+  }
+
+  #Mainsec {
+    height: 450px;
+  }
+
+  .text {
+    top: 60%;
+    left: 5%;
+  }
+
+  .text h1 {
+    font-size: 35px;
+  }
+
+  .text h2 {
+    font-size: 18px;
+  }
+
+  .text h3 {
+    font-size: 14px;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .introsec video {
+    width: 100%;
+    height: auto;
+  }
+
+  .intro-text h2 {
+    font-size: 22px;
+  }
+
+  .intro-text p {
+    font-size: 16px;
+  }
+
+  .Breeds {
+    width: 100%;
+  }
+  
+ .dog-image-section{
+  margin-top: 120px;
+ }
+  .dog-gallery img {
+    width: 100%;
+    height: auto;
+  }
+
+  .breed-box h2 {
+    font-size: 30px;
+  }
+
+  .breed-box p {
+    font-size: 18px;
+  }
+}
+
+
+
+/* ================= TABLETS (481px - 768px) ================= */
+@media (max-width: 768px) {
+
+  header {
+    flex-wrap: wrap;
+  }
+
+  .pawlogo1 {
+    width: 25%;
+  }
+
+  header ul {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .Mainprof {
+    height: 550px;
+  }
+
+  #Mainsec {
+    height: 600px;
+  }
+
+  .text h1 {
+    font-size: 45px;
+  }
+
+  .text h2 {
+    font-size: 22px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .introsec video {
+    width: 100%;
+    height: auto;
+  }
+
+  .Breeds {
+    width: 45%;
+  }
+
+  .dog-gallery img {
+    width: 320px;
+    height: auto;
+  }
+
+  .breed-box {
+    padding: 20px;
+  }
+}
+
+
+
+/* ================= LAPTOPS (769px - 1200px) ================= */
+@media (max-width: 1200px) {
+
+  .pawlogo1 {
+    width: 18%;
+  }
+
+  header ul {
+    width: 70%;
+  }
+
+  .text h1 {
+    font-size: 55px;
+  }
+
+  .Breeds {
+    width: 280px;
+  }
+
+  .dog-gallery img {
+    width: 400px;
+    height: auto;
+  }
+}
+
+
+
+/* ================= LARGE DESKTOPS (1201px+) ================= */
+@media (min-width: 1201px) {
+
+  .Mainprof {
+    height: 800px;
+  }
+
+  .text h1 {
+    font-size: 80px;
+  }
+
+  .introsec video {
+    width: 450px;
+    height: 500px;
+  }
+
+  .dog-gallery img {
+    width: 550px;
+    height: 650px;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* --------------------jquery main image css ------------- */
+ 
+/*
+Theme Name: 
+
+Theme URI: 
+
+Description: 
+
+Version: 1.0
+
+Author: WebCastle
+
+Author URI: http://webcastletech.com/
+
+*/
+
+
+
+
+
+.banner-container {
+  overflow: hidden;
+  position: relative;
+  width:100%;
+  height: 400px;
+	
+}
+
+.banner-container li img{
+  height: 400px;
+}
+
+.banner-container li {
+  float: left;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  z-index: 9;
+}
+
+.banner-container li a {
+  display: block;
+  padding: 0px;
+  margin: 0px;
+}
+
+.banner-container li span.overlay {
+  background: url(../js/images/bg-overlay.png) repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+
+
+
+
